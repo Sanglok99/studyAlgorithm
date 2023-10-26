@@ -1,0 +1,37 @@
+#include <iostream>
+using namespace std;
+
+void swap(int a[], int x, int y){
+  int temp=a[x];
+  a[x]=a[y];
+  a[y]=temp;
+}
+
+void bblSort(int a[],int size){
+  for(int i=0; i<size; i++){ //최대 n번 반복(최댓값이 배열 맨 처음에 있을 경우)
+    for(int j=size-1; j>0; j--){
+      if(a[j]<a[j-1]){
+        swap(a, j ,j-1);
+      }
+    }
+  }
+}
+
+void display(int a[], int size){
+  for(int i=0; i<size; i++){
+    if(i==size-1){
+      cout<<a[i];
+    }
+    else
+    cout<<a[i]<<", ";
+  }
+  cout<<endl;
+}
+
+int main(){
+  int a[]={10000, 102, 103, 3049, 293, 2935, 283, 768, 233, 9438, 1239};
+  int size=sizeof(a)/sizeof(int);
+  display(a,size);
+  bblSort(a,size);
+  display(a,size);
+}
